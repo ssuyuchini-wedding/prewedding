@@ -1,8 +1,9 @@
 "use strict";
 const body=document.body;
-const book=document.getElementById("book");
+const frontCover=document.getElementById("frontCover");
 const pages=[...document.querySelectorAll(".page")];
 const sectionTabs=[...document.querySelectorAll(".section-tab")];
+let coverOpen=false;
 let currentPage=0;
 let touchStartX=0;
 let touchStartY=0;
@@ -21,16 +22,38 @@ const pageIndex=Number(tab.dataset.page);
 tab.classList.toggle("is-passed",currentPage>pageIndex);
 });
 }
-async function openBook(){
+async function presentBook(){
 await wait(200);
 body.classList.add("is-visible");
 await wait(1100);
 body.classList.add("is-near");
-await wait(1450);
+}
+function openCover(){
+if(isAnimating||coverOpen)return;
+isAnimating=true;
+coverOpen=true;
 body.classList.add("is-open");
+window.setTimeout(()=>{
+isAnimating=false;
+},1700);
+}
+function closeCover(){
+if(isAnimating||!coverOpen||currentPage!==0)return;
+isAnimating=true;
+coverOpen=false;
+body.classList.remove("is-open");
+body.classList.remove("has-turned");
+window.setTimeout(()=>{
+isAnimating=false;
+},1700);
 }
 function nextPage(){
-if(isAnimating||currentPage>=pages.length-1)return;
+if(isAnimating)return;
+if(!coverOpen){
+openCover();
+return;
+}
+if(currentPage>=pages.length-1)return;
 isAnimating=true;
 body.classList.add("has-turned");
 pages[currentPage].classList.add("is-turned");
@@ -41,7 +64,12 @@ isAnimating=false;
 },950);
 }
 function previousPage(){
-if(isAnimating||currentPage<=0)return;
+if(isAnimating)return;
+if(!coverOpen)return;
+if(currentPage===0){
+closeCover();
+return;
+}
 isAnimating=true;
 currentPage-=1;
 pages[currentPage].classList.remove("is-turned");
@@ -51,7 +79,12 @@ isAnimating=false;
 },950);
 }
 function goToPage(targetPage){
-if(isAnimating||targetPage===currentPage)return;
+if(isAnimating)return;
+if(!coverOpen){
+openCover();
+return;
+}
+if(targetPage===currentPage)return;
 isAnimating=true;
 body.classList.add("has-turned");
 if(targetPage>currentPage){
@@ -84,7 +117,6 @@ if(deltaX<0)nextPage();
 else previousPage();
 }
 function handleTap(event){
-if(!body.classList.contains("is-open"))return;
 if(event.target.closest(".section-tab"))return;
 const x=event.clientX;
 if(x>window.innerWidth*.62)nextPage();
@@ -99,11 +131,15 @@ const targetPage=Number(tab.dataset.page);
 goToPage(targetPage);
 });
 });
+frontCover.addEventListener("click",event=>{
+event.stopPropagation();
+openCover();
+});
 document.addEventListener("touchstart",handleTouchStart,{passive:true});
 document.addEventListener("touchend",handleTouchEnd,{passive:true});
 document.addEventListener("click",handleTap);
 if(document.readyState==="loading"){
-document.addEventListener("DOMContentLoaded",openBook,{once:true});
+document.addEventListener("DOMContentLoaded",presentBook,{once:true});
 }else{
-openBook();
+presentBook();
 }

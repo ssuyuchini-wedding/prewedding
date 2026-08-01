@@ -220,7 +220,7 @@ line-height:1.5;
 .section-tabs{
 position:absolute;
 top:5%;
-right:-5.5%;
+right:-3%;
 width:6.5%;
 height:88%;
 z-index:80;
@@ -234,10 +234,10 @@ opacity:1;
 position:absolute;
 right:0;
 width:100%;
-height:11.5%;
+height:10%;
 padding:0;
 border:0;
-border-radius:0 5px 5px 0;
+border-radius:0 3px 3px 0;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -246,7 +246,10 @@ cursor:pointer;
 pointer-events:auto;
 transform-origin:left center;
 transition:transform 900ms cubic-bezier(.58,.02,.25,1),opacity 500ms ease;
-box-shadow:2px 2px 5px rgba(0,0,0,.28);
+/* 更像紙，而不是按鈕 */
+box-shadow:
+    1px 1px 2px rgba(0,0,0,.12),
+    inset 0 0 0 1px rgba(255,255,255,.18);
 }
 .section-tab span{
 display:block;
@@ -275,28 +278,28 @@ top:52%;
 top:65%;
 }
 .tab-white-one{
+background:#f4efe5;
 color:#443428;
-background:#eee4d2;
 }
 .tab-blue{
-color:#243540;
-background:#aebdca;
+background:#c9d7e3;
+color:#32424d;
 }
 .tab-pink{
-color:#5c3436;
-background:#ddb9b7;
+background:#e8d5d5;
+color:#5b3b3b;
 }
 .tab-black{
-color:#eee7dc;
-background:#252220;
+background:#3a3634;
+color:#f0ebe5;
 }
 .tab-red{
-color:#f2e7da;
-background:#74251f;
+background:#8b4037;
+color:#f5ebe2;
 }
 .tab-white-two{
+background:#efeee6;
 color:#43503f;
-background:#e5e6dc;
 }
 .section-tab.is-passed{
 opacity:0;

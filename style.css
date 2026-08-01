@@ -95,6 +95,7 @@ box-shadow:0 8px 0 #1d0d09,0 18px 28px rgba(0,0,0,.45);
 .pages{
 position:absolute;
 inset:2.5%;
+z-index:20;
 transform-style:preserve-3d;
 }
 .page{
@@ -137,8 +138,8 @@ text-align:center;
 .page-content h2{
 margin:8px 0;
 font-weight:500;
-line-height:.95;
-font-size:clamp(35px,12vw,58px);
+line-height:1;
+font-size:clamp(32px,10vw,50px);
 }
 .page-content p{
 margin:6px 0;
@@ -168,6 +169,105 @@ bottom:5%;
 font-size:10px;
 letter-spacing:.18em;
 opacity:.55;
+}
+.title-page-content h2{
+margin:18px 0;
+font-size:clamp(31px,9vw,46px);
+line-height:1.08;
+letter-spacing:.02em;
+}
+.title-ornament{
+margin:0 0 22px!important;
+color:#a77c49;
+font-size:clamp(18px,5vw,25px)!important;
+letter-spacing:0!important;
+}
+.title-page-content .quote{
+max-width:16em;
+font-size:clamp(11px,3.2vw,14px);
+}
+.section-tabs{
+position:absolute;
+top:4%;
+right:-10%;
+width:15%;
+height:90%;
+z-index:80;
+pointer-events:none;
+}
+.section-tab{
+position:absolute;
+right:0;
+width:100%;
+height:13%;
+padding:0;
+border:0;
+border-radius:0 7px 7px 0;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+cursor:pointer;
+pointer-events:auto;
+transform-origin:left center;
+transition:transform 900ms cubic-bezier(.58,.02,.25,1),opacity 500ms ease;
+box-shadow:3px 3px 7px rgba(0,0,0,.3);
+}
+.section-tab span{
+display:block;
+font-family:Georgia,"Times New Roman",serif;
+font-size:clamp(8px,2.4vw,11px);
+letter-spacing:.12em;
+writing-mode:horizontal-tb;
+transform:rotate(90deg);
+white-space:nowrap;
+}
+.section-tab:nth-child(1){
+top:0;
+}
+.section-tab:nth-child(2){
+top:14%;
+}
+.section-tab:nth-child(3){
+top:28%;
+}
+.section-tab:nth-child(4){
+top:42%;
+}
+.section-tab:nth-child(5){
+top:56%;
+}
+.section-tab:nth-child(6){
+top:70%;
+}
+.tab-white-one{
+color:#443428;
+background:#eee4d2;
+}
+.tab-blue{
+color:#243540;
+background:#aebdca;
+}
+.tab-pink{
+color:#5c3436;
+background:#ddb9b7;
+}
+.tab-black{
+color:#eee7dc;
+background:#252220;
+}
+.tab-red{
+color:#f2e7da;
+background:#74251f;
+}
+.tab-white-two{
+color:#43503f;
+background:#e5e6dc;
+}
+.section-tab.is-passed{
+opacity:0;
+transform:rotateY(-180deg);
+pointer-events:none;
 }
 .chapter-white{
 background:linear-gradient(145deg,#f9f6ef,#e9dfd0);

@@ -1,52 +1,99 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, viewport-fit=cover"
-    >
-    <title>Our Storybook</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>Our Storybook</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main class="stage">
-        <div class="ambient-glow"></div>
-        <section class="book-scene" aria-label="Our wedding storybook">
-            <div class="book" id="book">
-                <div class="page-stack page-stack-left"></div>
-                <div class="page-stack page-stack-right"></div>
-
-                <div class="inside-spread">
-                    <article class="inside-page inside-left">
-                        <div class="page-inner">
-                            <p class="small-ornament">✦</p>
-                            <p class="inside-kicker">Ssu-Yu & Chin-I</p>
-                        </div>
-                    </article>
-                    <article class="inside-page inside-right">
-                        <div class="page-inner title-page">
-                            <p class="title-small">2022 · 2026</p>
-                            <h2>Our Story</h2>
-                            <p class="title-quote">
-                                Every day still feels like newlyweds.
-                            </p>
-                        </div>
-                    </article>
-                </div>
-                <div class="front-cover" id="frontCover">
+<main class="stage">
+<div class="ambient-light"></div>
+<section class="book-scene" aria-label="Our Storybook">
+<div class="book" id="book">
+<div class="page-block"></div>
+<div class="back-cover"></div>
+<div class="pages" id="pages">
+<article class="page title-page">
+<div class="page-content">
+<p class="small-year">2022 · 2026</p>
+<h2>Our Storybook</h2>
+<p class="couple-name">Ssu-Yu & Chin-I</p>
+<p class="quote">Every day still feels like newlyweds.</p>
+<span class="page-number">01</span>
+</div>
+</article>
+<article class="page chapter-page chapter-white">
+<div class="page-content">
+<p class="chapter-number">CHAPTER 01</p>
+<h2>WHITE</h2>
+<p>2022 · STUDIO</p>
+<span class="page-number">02</span>
+</div>
+</article>
+<article class="page chapter-page chapter-blue">
+<div class="page-content">
+<p class="chapter-number">CHAPTER 02</p>
+<h2>BLUE</h2>
+<p>2022 · LIN AN TAI</p>
+<span class="page-number">03</span>
+</div>
+</article>
+<article class="page chapter-page chapter-pink">
+<div class="page-content">
+<p class="chapter-number">CHAPTER 03</p>
+<h2>PINK</h2>
+<p>2022 · BY THE SEA</p>
+<span class="page-number">04</span>
+</div>
+</article>
+<article class="page chapter-page chapter-black">
+<div class="page-content">
+<p class="chapter-number">CHAPTER 04</p>
+<h2>BLACK</h2>
+<p>2026 · STUDIO</p>
+<span class="page-number">05</span>
+</div>
+</article>
+<article class="page chapter-page chapter-red">
+<div class="page-content">
+<p class="chapter-number">CHAPTER 05</p>
+<h2>RED</h2>
+<p>2026 · CONFUCIUS TEMPLE</p>
+<span class="page-number">06</span>
+</div>
+</article>
+<article class="page chapter-page chapter-white-two">
+<div class="page-content">
+<p class="chapter-number">CHAPTER 06</p>
+<h2>WHITE</h2>
+<p>2026 · GARDEN</p>
+<span class="page-number">07</span>
+</div>
+</article>
+<article class="page ending-page">
+<div class="page-content">
+<h2>To be continued...</h2>
+<p>Every day still feels like newlyweds.</p>
+<span class="page-number">08</span>
+</div>
+</article>
+</div>
+<div class="front-cover" id="frontCover">
+<div class="leather-texture"></div>
 <img class="cover-ornament" src="assets/images/cover-frame.png" alt="">
 <div class="cover-content">
-<p class="cover-kicker">2022 · 2026</p>
+<p class="cover-year">2022 · 2026</p>
 <h1>Our Storybook</h1>
-<p class="names">Ssu-Yu & Chin-I</p>
+<p class="cover-names">Ssu-Yu & Chin-I</p>
 <p class="cover-quote">Every day still feels like newlyweds.</p>
 </div>
-                    <div class="spine-ridge"></div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <script src="script.js"></script>
+<div class="spine"></div>
+</div>
+</div>
+</section>
+<div class="page-hint" id="pageHint">Swipe to turn the page</div>
+</main>
+<script src="script.js"></script>
 </body>
 </html>

@@ -2,7 +2,6 @@
 const body=document.body;
 const frontCover=document.getElementById("frontCover");
 const pages=[...document.querySelectorAll(".page")];
-const sectionTabs=[...document.querySelectorAll(".section-tab")];
 let coverOpen=false;
 let currentPage=0;
 let touchStartX=0;
@@ -14,12 +13,6 @@ return new Promise(resolve=>window.setTimeout(resolve,ms));
 function updatePageLayers(){
 pages.forEach((page,index)=>{
 page.style.zIndex=String(pages.length-index);
-});
-}
-function updateSectionTabs(){
-sectionTabs.forEach(tab=>{
-const pageIndex=Number(tab.dataset.page);
-tab.classList.toggle("is-passed",currentPage>pageIndex);
 });
 }
 async function presentBook(){
@@ -58,7 +51,6 @@ isAnimating=true;
 body.classList.add("has-turned");
 pages[currentPage].classList.add("is-turned");
 currentPage+=1;
-updateSectionTabs();
 window.setTimeout(()=>{
 isAnimating=false;
 },950);
@@ -73,32 +65,6 @@ return;
 isAnimating=true;
 currentPage-=1;
 pages[currentPage].classList.remove("is-turned");
-updateSectionTabs();
-window.setTimeout(()=>{
-isAnimating=false;
-},950);
-}
-function goToPage(targetPage){
-if(isAnimating)return;
-if(!coverOpen){
-openCover();
-return;
-}
-if(targetPage===currentPage)return;
-isAnimating=true;
-body.classList.add("has-turned");
-if(targetPage>currentPage){
-while(currentPage<targetPage){
-pages[currentPage].classList.add("is-turned");
-currentPage+=1;
-}
-}else{
-while(currentPage>targetPage){
-currentPage-=1;
-pages[currentPage].classList.remove("is-turned");
-}
-}
-updateSectionTabs();
 window.setTimeout(()=>{
 isAnimating=false;
 },950);
@@ -117,20 +83,11 @@ if(deltaX<0)nextPage();
 else previousPage();
 }
 function handleTap(event){
-if(event.target.closest(".section-tab"))return;
 const x=event.clientX;
 if(x>window.innerWidth*.62)nextPage();
 if(x<window.innerWidth*.38)previousPage();
 }
 updatePageLayers();
-updateSectionTabs();
-sectionTabs.forEach(tab=>{
-tab.addEventListener("click",event=>{
-event.stopPropagation();
-const targetPage=Number(tab.dataset.page);
-goToPage(targetPage);
-});
-});
 frontCover.addEventListener("click",event=>{
 event.stopPropagation();
 openCover();

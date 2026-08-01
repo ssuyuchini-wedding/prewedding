@@ -223,7 +223,7 @@ top:5%;
 right:-3%;
 width:6.5%;
 height:88%;
-z-index:80;
+z-index:19;
 pointer-events:none;
 opacity:0;
 }
@@ -246,10 +246,6 @@ cursor:pointer;
 pointer-events:auto;
 transform-origin:left center;
 transition:transform 900ms cubic-bezier(.58,.02,.25,1),opacity 500ms ease;
-/* 更像紙，而不是按鈕 */
-box-shadow:
-    1px 1px 2px rgba(0,0,0,.12),
-    inset 0 0 0 1px rgba(255,255,255,.18);
 }
 .section-tab span{
 display:block;
@@ -259,47 +255,53 @@ letter-spacing:.08em;
 transform:rotate(90deg);
 white-space:nowrap;
 }
-.section-tab:nth-child(1){
-top:0;
-}
-.section-tab:nth-child(2){
-top:13%;
-}
-.section-tab:nth-child(3){
-top:26%;
-}
-.section-tab:nth-child(4){
-top:39%;
-}
-.section-tab:nth-child(5){
-top:52%;
-}
-.section-tab:nth-child(6){
-top:65%;
-}
+.section-tab:nth-child(1){top:0;}
+.section-tab:nth-child(2){top:13%;}
+.section-tab:nth-child(3){top:26%;}
+.section-tab:nth-child(4){top:39%;}
+.section-tab:nth-child(5){top:52%;}
+.section-tab:nth-child(6){top:65%;}
 .tab-white-one{
-background:#f4efe5;
-color:#443428;
+background:linear-gradient(
+145deg,
+#f9f6ef,
+#e9dfd0
+);
 }
 .tab-blue{
-background:#c9d7e3;
-color:#32424d;
+background:linear-gradient(
+145deg,
+#d8e0e5,
+#aab9c6
+);
 }
 .tab-pink{
-background:#e8d5d5;
-color:#5b3b3b;
+background:linear-gradient(
+145deg,
+#f2ddd9,
+#d7b5b3
+);
 }
 .tab-black{
-background:#3a3634;
-color:#f0ebe5;
+background:linear-gradient(
+145deg,
+#393432,
+#151312
+);
 }
 .tab-red{
-background:#8b4037;
-color:#f5ebe2;
+background:linear-gradient(
+145deg,
+#7b2924,
+#35100f
+);
 }
 .tab-white-two{
-background:#efeee6;
-color:#43503f;
+background:linear-gradient(
+145deg,
+#f8f5ec,
+#dfe4d7
+);
 }
 .section-tab.is-passed{
 opacity:0;
@@ -339,7 +341,7 @@ transform-style:preserve-3d;
 backface-visibility:hidden;
 border-radius:11px 15px 15px 11px;
 background:linear-gradient(140deg,var(--leather-light),var(--leather-dark) 76%);
-box-shadow:inset 0 0 0 2px rgba(255,255,255,.03),inset -18px 0 24px rgba(0,0,0,.32),0 8px 0 #1d0d09,0 18px 28px rgba(0,0,0,.58);
+box-shadow:none;
 transition:transform 1700ms cubic-bezier(.46,.03,.16,1),box-shadow 1200ms ease;
 }
 body.is-open .front-cover{

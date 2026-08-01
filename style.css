@@ -336,9 +336,9 @@ background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.08),transparent 
 .cover-photo{
 position:absolute;
 left:54%;
-top:52%;
+top:50%;
 width:58%;
-height:70%;
+height:76%;
 z-index:1;
 overflow:hidden;
 transform:translate(-50%,-50%);
@@ -374,7 +374,7 @@ filter:drop-shadow(0 2px 1px rgba(35,18,6,.85)) drop-shadow(0 0 5px rgba(242,202
 .cover-content{
 position:absolute;
 left:54%;
-top:71%;
+top:77%;
 width:49%;
 z-index:3;
 display:flex;
@@ -384,20 +384,20 @@ justify-content:center;
 text-align:center;
 transform:translate(-50%,-50%);
 color:#f4dfad;
-text-shadow:0 1px 1px rgba(43,20,8,.9),0 3px 7px rgba(0,0,0,.9);
+text-shadow:0 1px 1px rgba(43,20,8,.95),0 3px 7px rgba(0,0,0,.95);
 pointer-events:none;
 }
 .cover-names{
-margin:0 0 7px;
-font-size:clamp(13px,3.7vw,18px);
+margin:0 0 6px;
+font-size:clamp(11px,3.1vw,15px);
 font-weight:600;
 letter-spacing:.025em;
 }
 .cover-quote{
-max-width:20em;
+max-width:19em;
 margin:0;
 color:#ead8b5;
-font-size:clamp(8px,2.15vw,10px);
+font-size:clamp(7px,1.9vw,9px);
 font-style:italic;
 line-height:1.35;
 }

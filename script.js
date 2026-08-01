@@ -16,16 +16,16 @@ page.style.zIndex=String(pages.length-index);
 });
 }
 async function presentBook(){
-await wait(200);
+await wait(150);
 body.classList.add("is-visible");
-await wait(1100);
+await wait(50);
 body.classList.add("is-near");
 }
 function openCover(){
 if(isAnimating||coverOpen)return;
 isAnimating=true;
 coverOpen=true;
-body.classList.add("is-open");
+body.classList.add("is-reading","is-open");
 window.setTimeout(()=>{
 isAnimating=false;
 },1700);
@@ -37,6 +37,7 @@ coverOpen=false;
 body.classList.remove("is-open");
 body.classList.remove("has-turned");
 window.setTimeout(()=>{
+body.classList.remove("is-reading");
 isAnimating=false;
 },1700);
 }

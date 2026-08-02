@@ -222,26 +222,35 @@ font-size:clamp(9px,2.35vw,11px);
 line-height:1.35;
 white-space:nowrap;
 }
-.page-tab{
+.section-tabs{
 position:absolute;
-right:-5.5%;
+inset:0;
+z-index:80;
+pointer-events:none;
+opacity:0;
+transition:opacity .15s linear;
+}
+body.is-open .section-tabs{
+opacity:1;
+}
+.section-tab{
+position:absolute;
+right:-3.5%;
 width:6%;
 height:8%;
-z-index:5;
+margin:0;
+padding:0;
+border:0;
+border-radius:0 2px 2px 0;
 display:flex;
 align-items:center;
 justify-content:center;
-border:0;
-border-radius:0 2px 2px 0;
 overflow:hidden;
+cursor:pointer;
 pointer-events:auto;
-opacity:0;
-transition:none;
+font:inherit;
 }
-body.is-open .page-tab{
-opacity:1;
-}
-.page-tab span{
+.section-tab span{
 display:block;
 font-family:Georgia,"Times New Roman",serif;
 font-size:clamp(5px,1.5vw,8px);

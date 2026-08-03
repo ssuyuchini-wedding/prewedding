@@ -59,7 +59,7 @@ if(isAnimating||coverOpen)return;
 
 isAnimating=true;
 coverOpen=true;
-if(bgMusic.paused){
+if(bgMusic && bgMusic.paused){
 fadeInMusic();
 }
 playSound();

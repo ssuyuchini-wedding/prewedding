@@ -6,7 +6,7 @@ const pages=[...document.querySelectorAll(".page")];
 const sectionTabs=[...document.querySelectorAll(".section-tab")];
 const bgMusic=document.getElementById("bgMusic");
 const pageHint=document.getElementById("pageHint");
-const goldDust=document.getElementById("goldDust");
+const stage=document.querySelector(".stage");
 const pageTurnSound=new Audio("assets/audio/page-turn.mp3");
 pageTurnSound.preload="auto";
 pageTurnSound.volume=0.6;
@@ -17,31 +17,48 @@ let touchStartX=0;
 let touchStartY=0;
 let isAnimating=false;
 
-function createGoldDust(){
-if(!goldDust)return;
+function createBackgroundSparkle(){
+if(!stage)return;
 
-for(let i=0;i<20;i++){
-const dust=document.createElement("span");
-dust.className="dust-particle";
+const sparkle=document.createElement("span");
+sparkle.className="album-sparkle";
 
-const size=2+Math.random()*3;
-const duration=14+Math.random()*12;
-const glowDuration=4+Math.random()*6;
-const delay=-(Math.random()*duration);
-const drift=-30+Math.random()*60;
+let x;
+let y;
 
-dust.style.left=Math.random()*100+"%";
-dust.style.top=Math.random()*100+"%";
-dust.style.width=size+"px";
-dust.style.height=size+"px";
+do{
+x=Math.random()*100;
+y=Math.random()*100;
+}while(
+x>38 &&
+x<62 &&
+y>22 &&
+y<78
+);
 
-dust.style.setProperty("--duration",duration+"s");
-dust.style.setProperty("--glow-duration",glowDuration+"s");
-dust.style.setProperty("--delay",delay+"s");
-dust.style.setProperty("--drift",drift+"px");
+sparkle.style.left=x+"%";
+sparkle.style.top=y+"%";
 
-goldDust.appendChild(dust);
+const randomSize=Math.random();
+let size;
+
+if(randomSize<0.75){
+size=Math.random()*2+1.5;
+}else if(randomSize<0.97){
+size=Math.random()*2+3.5;
+}else{
+size=Math.random()*2+5.5;
 }
+
+sparkle.style.width=size+"px";
+sparkle.style.height=size+"px";
+sparkle.style.animationDuration=(Math.random()*2+2.5)+"s";
+
+stage.appendChild(sparkle);
+
+window.setTimeout(()=>{
+sparkle.remove();
+},5000);
 }
 
 function playSound(){
@@ -226,8 +243,7 @@ previousPage();
 }
 
 updatePageLayers();
-createGoldDust();
-
+window.setInterval(createBackgroundSparkle,280);
 
 sectionTabs.forEach(tab=>{
 tab.addEventListener("click",event=>{

@@ -535,53 +535,32 @@ font-size:clamp(10px,2.5vw,13px);
 letter-spacing:0;
 color:#6f5c4e;
 }
-.gold-dust{
+.album-sparkle{
 position:absolute;
-inset:0;
-overflow:hidden;
-pointer-events:none;
-z-index:200;
-}
-
-.dust-particle{
-position:absolute;
+z-index:150;
+width:3px;
+height:3px;
 border-radius:50%;
-background:radial-gradient(
-circle,
-rgba(255,245,190,.95) 0%,
-rgba(226,183,92,.75) 42%,
-rgba(226,183,92,0) 100%
-);
+background:#f6d88a;
 box-shadow:
-0 0 7px rgba(240,199,105,.55),
-0 0 15px rgba(240,199,105,.2);
-opacity:0;
-animation:
-dust-float var(--duration) linear infinite,
-dust-glow var(--glow-duration) ease-in-out infinite;
-animation-delay:var(--delay);
+0 0 8px rgba(246,216,138,.95),
+0 0 18px rgba(246,216,138,.6);
+pointer-events:none;
+animation:albumSparkleFloat 3.5s ease-out forwards;
 }
 
-@keyframes dust-float{
+@keyframes albumSparkleFloat{
 0%{
-transform:translate3d(0,18px,0);
-}
-50%{
-transform:translate3d(var(--drift),-12px,0);
-}
-100%{
-transform:translate3d(calc(var(--drift) * -0.45),-48px,0);
-}
+opacity:0;
+transform:translateY(8px) scale(.4);
 }
 
-@keyframes dust-glow{
-0%,100%{
-opacity:.08;
+25%{
+opacity:.8;
 }
-45%{
-opacity:.42;
-}
-70%{
-opacity:.18;
+
+100%{
+opacity:0;
+transform:translateY(-35px) scale(1);
 }
 }

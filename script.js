@@ -5,6 +5,7 @@ const frontCover=document.getElementById("frontCover");
 const pages=[...document.querySelectorAll(".page")];
 const sectionTabs=[...document.querySelectorAll(".section-tab")];
 const bgMusic=document.getElementById("bgMusic");
+const pageHint=document.getElementById("pageHint");
 const pageTurnSound=new Audio("assets/audio/page-turn.mp3");
 pageTurnSound.preload="auto";
 pageTurnSound.volume=0.6;
@@ -29,6 +30,22 @@ pages.forEach((page,index)=>{
 page.style.zIndex=String(pages.length-index);
 });
 }
+function updatePageHint(){
+if(!pageHint)return;
+
+if(!coverOpen){
+pageHint.textContent="輕觸或滑動開始";
+body.classList.remove("hide-page-hint");
+return;
+}
+
+if(currentPage<3){
+pageHint.textContent="← 滑動翻頁 · 點右側標籤切換章節";
+body.classList.remove("hide-page-hint");
+}else{
+body.classList.add("hide-page-hint");
+}
+}
 
 async function presentBook(){
 await wait(150);
@@ -47,6 +64,7 @@ fadeInMusic();
 }
 playSound();
 body.classList.add("is-reading","is-open");
+updatePageHint();
 
 window.setTimeout(()=>{
 isAnimating=false;
@@ -58,6 +76,7 @@ if(isAnimating||!coverOpen||currentPage!==0)return;
 
 isAnimating=true;
 coverOpen=false;
+updatePageHint();
 playSound();
 body.classList.remove("is-open");
 body.classList.remove("has-turned");
@@ -83,6 +102,7 @@ playSound();
 body.classList.add("has-turned");
 pages[currentPage].classList.add("is-turned");
 currentPage+=1;
+updatePageHint();
 
 window.setTimeout(()=>{
 isAnimating=false;
@@ -100,6 +120,7 @@ return;
 isAnimating=true;
 playSound();
 currentPage-=1;
+updatePageHint();
 pages[currentPage].classList.remove("is-turned");
 
 window.setTimeout(()=>{
@@ -137,6 +158,7 @@ currentPage-=1;
 pages[currentPage].classList.remove("is-turned");
 }
 }
+updatePageHint();
 
 window.setTimeout(()=>{
 isAnimating=false;

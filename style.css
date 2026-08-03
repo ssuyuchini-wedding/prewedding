@@ -442,9 +442,6 @@ transform:translateX(-50%) translateY(0);
 body.is-open .page-hint{
 opacity:0;
 }
-body.has-turned .page-hint{
-opacity:0;
-}
 @media(max-height:700px){
 :root{
 --book-w:min(68vw,300px);
@@ -507,4 +504,12 @@ white-space:nowrap;
 color:#8a776b;
 opacity:.9;
 pointer-events:none;
+}
+body.is-open .page-hint{
+opacity:1;
+transform:translateX(-50%) translateY(0);
+}
+body.hide-page-hint .page-hint{
+opacity:0;
+transform:translateX(-50%) translateY(8px);
 }

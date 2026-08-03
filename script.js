@@ -6,6 +6,7 @@ const pages=[...document.querySelectorAll(".page")];
 const sectionTabs=[...document.querySelectorAll(".section-tab")];
 const bgMusic=document.getElementById("bgMusic");
 const pageHint=document.getElementById("pageHint");
+const goldDust=document.getElementById("goldDust");
 const pageTurnSound=new Audio("assets/audio/page-turn.mp3");
 pageTurnSound.preload="auto";
 pageTurnSound.volume=0.6;
@@ -15,6 +16,33 @@ let currentPage=0;
 let touchStartX=0;
 let touchStartY=0;
 let isAnimating=false;
+
+function createGoldDust(){
+if(!goldDust)return;
+
+for(let i=0;i<20;i++){
+const dust=document.createElement("span");
+dust.className="dust-particle";
+
+const size=2+Math.random()*3;
+const duration=14+Math.random()*12;
+const glowDuration=4+Math.random()*6;
+const delay=-(Math.random()*duration);
+const drift=-30+Math.random()*60;
+
+dust.style.left=Math.random()*100+"%";
+dust.style.top=Math.random()*100+"%";
+dust.style.width=size+"px";
+dust.style.height=size+"px";
+
+dust.style.setProperty("--duration",duration+"s");
+dust.style.setProperty("--glow-duration",glowDuration+"s");
+dust.style.setProperty("--delay",delay+"s");
+dust.style.setProperty("--drift",drift+"px");
+
+goldDust.appendChild(dust);
+}
+}
 
 function playSound(){
 pageTurnSound.currentTime=0;
@@ -198,6 +226,8 @@ previousPage();
 }
 
 updatePageLayers();
+createGoldDust();
+
 
 sectionTabs.forEach(tab=>{
 tab.addEventListener("click",event=>{

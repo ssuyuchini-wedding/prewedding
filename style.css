@@ -521,14 +521,14 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 height:100%;
+transform:translateY(-4%);
 }
 
 .ending-logo{
 width:85%;
 max-width:320px;
-margin-bottom:28px;
+margin-bottom:8px;
 }
-
 .ending-quote{
 font-style:italic;
 font-size:clamp(10px,2.5vw,13px);

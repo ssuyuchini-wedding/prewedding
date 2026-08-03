@@ -5,11 +5,20 @@ const frontCover=document.getElementById("frontCover");
 const pages=[...document.querySelectorAll(".page")];
 const sectionTabs=[...document.querySelectorAll(".section-tab")];
 
+const pageTurnSound=new Audio("assets/audio/page-turn.mp3");
+pageTurnSound.preload="auto";
+pageTurnSound.volume=0.6;
+
 let coverOpen=false;
 let currentPage=0;
 let touchStartX=0;
 let touchStartY=0;
 let isAnimating=false;
+
+function playSound(){
+pageTurnSound.currentTime=0;
+pageTurnSound.play().catch(()=>{});
+}
 
 function wait(ms){
 return new Promise(resolve=>window.setTimeout(resolve,ms));
@@ -33,6 +42,7 @@ if(isAnimating||coverOpen)return;
 
 isAnimating=true;
 coverOpen=true;
+playSound();
 body.classList.add("is-reading","is-open");
 
 window.setTimeout(()=>{
@@ -45,6 +55,7 @@ if(isAnimating||!coverOpen||currentPage!==0)return;
 
 isAnimating=true;
 coverOpen=false;
+playSound();
 body.classList.remove("is-open");
 body.classList.remove("has-turned");
 
@@ -65,6 +76,7 @@ return;
 if(currentPage>=pages.length-1)return;
 
 isAnimating=true;
+playSound();
 body.classList.add("has-turned");
 pages[currentPage].classList.add("is-turned");
 currentPage+=1;
@@ -83,6 +95,7 @@ return;
 }
 
 isAnimating=true;
+playSound();
 currentPage-=1;
 pages[currentPage].classList.remove("is-turned");
 
@@ -107,6 +120,7 @@ return;
 if(targetPage===currentPage)return;
 
 isAnimating=true;
+playSound();
 body.classList.add("has-turned");
 
 if(targetPage>currentPage){

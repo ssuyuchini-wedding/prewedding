@@ -4,7 +4,7 @@ const body=document.body;
 const frontCover=document.getElementById("frontCover");
 const pages=[...document.querySelectorAll(".page")];
 const sectionTabs=[...document.querySelectorAll(".section-tab")];
-
+const bgMusic=document.getElementById("bgMusic");
 const pageTurnSound=new Audio("assets/audio/page-turn.mp3");
 pageTurnSound.preload="auto";
 pageTurnSound.volume=0.6;
@@ -42,6 +42,9 @@ if(isAnimating||coverOpen)return;
 
 isAnimating=true;
 coverOpen=true;
+if(bgMusic.paused){
+fadeInMusic();
+}
 playSound();
 body.classList.add("is-reading","is-open");
 
@@ -201,4 +204,28 @@ if(document.readyState==="loading"){
 document.addEventListener("DOMContentLoaded",presentBook,{once:true});
 }else{
 presentBook();
+}
+function fadeInMusic(){
+
+bgMusic.volume=0;
+
+bgMusic.play();
+
+const targetVolume=0.10;
+
+const interval=setInterval(()=>{
+
+if(bgMusic.volume>=targetVolume){
+
+bgMusic.volume=targetVolume;
+
+clearInterval(interval);
+
+}else{
+bgMusic.volume=Math.min(
+bgMusic.volume+0.01,
+targetVolume
+);
+}
+},100);
 }

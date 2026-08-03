@@ -92,6 +92,32 @@ body.classList.add("hide-page-hint");
 }
 }
 
+function updateSectionTabs(){
+const chapterPages=[
+document.querySelector(".chapter-white"),
+document.querySelector(".chapter-blue"),
+document.querySelector(".chapter-pink"),
+document.querySelector(".chapter-black"),
+document.querySelector(".chapter-red"),
+document.querySelector(".chapter-white-two")
+];
+
+let activeChapter=-1;
+
+chapterPages.forEach((chapterPage,index)=>{
+const chapterPageIndex=pages.indexOf(chapterPage);
+
+if(currentPage>=chapterPageIndex){
+activeChapter=index;
+}
+});
+
+sectionTabs.forEach((tab,index)=>{
+tab.classList.toggle("is-past",index<activeChapter);
+tab.classList.toggle("is-active",index===activeChapter);
+});
+}
+
 async function presentBook(){
 await wait(150);
 body.classList.add("is-visible");
@@ -110,6 +136,7 @@ fadeInMusic();
 playSound();
 body.classList.add("is-reading","is-open");
 updatePageHint();
+updateSectionTabs();
 
 window.setTimeout(()=>{
 isAnimating=false;
@@ -148,6 +175,7 @@ body.classList.add("has-turned");
 pages[currentPage].classList.add("is-turned");
 currentPage+=1;
 updatePageHint();
+updateSectionTabs();
 
 window.setTimeout(()=>{
 isAnimating=false;
@@ -166,6 +194,7 @@ isAnimating=true;
 playSound();
 currentPage-=1;
 updatePageHint();
+updateSectionTabs();
 pages[currentPage].classList.remove("is-turned");
 
 window.setTimeout(()=>{
@@ -204,6 +233,7 @@ pages[currentPage].classList.remove("is-turned");
 }
 }
 updatePageHint();
+updateSectionTabs();
 
 window.setTimeout(()=>{
 isAnimating=false;
@@ -243,6 +273,7 @@ previousPage();
 }
 
 updatePageLayers();
+updateSectionTabs();
 window.setInterval(createBackgroundSparkle,280);
 
 sectionTabs.forEach(tab=>{

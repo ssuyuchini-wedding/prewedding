@@ -564,3 +564,21 @@ opacity:0;
 transform:translateY(-35px) scale(1);
 }
 }
+.section-tab{
+transition:
+opacity .35s ease,
+transform .35s ease,
+filter .35s ease;
+}
+
+.section-tab.is-past{
+opacity:0;
+pointer-events:none;
+}
+
+.section-tab.is-active{
+transform:translateX(3px);
+filter:
+brightness(1.08)
+drop-shadow(1px 1px 3px rgba(0,0,0,.28));
+}

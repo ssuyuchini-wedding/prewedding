@@ -205,27 +205,41 @@ document.addEventListener("DOMContentLoaded",presentBook,{once:true});
 }else{
 presentBook();
 }
+let musicFadeInterval=null;
+
 function fadeInMusic(){
+
+if(!bgMusic)return;
+
+if(musicFadeInterval){
+clearInterval(musicFadeInterval);
+}
 
 bgMusic.volume=0;
 
-bgMusic.play();
+bgMusic.play().catch(()=>{});
 
 const targetVolume=0.10;
 
-const interval=setInterval(()=>{
+musicFadeInterval=setInterval(()=>{
 
 if(bgMusic.volume>=targetVolume){
 
 bgMusic.volume=targetVolume;
 
-clearInterval(interval);
+clearInterval(musicFadeInterval);
 
-}else{
+musicFadeInterval=null;
+
+return;
+
+}
+
 bgMusic.volume=Math.min(
 bgMusic.volume+0.01,
 targetVolume
 );
-}
+
 },100);
+
 }
